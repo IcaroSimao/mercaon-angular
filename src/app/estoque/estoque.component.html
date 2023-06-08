@@ -1,0 +1,26 @@
+<div class="barra sidebar-opener"><i class="fa-solid fa-bars icon2" (click)="sidebarShow = !sidebarShow"></i></div>
+
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Produtos</h1>
+  </div>
+
+  <div class="text-center">
+    <h2 class="h4 mb-4">Quantidade:</h2>
+  </div>
+
+  <div class="text-center">
+    <h2 class="h4 mb-4">R$ 0,00</h2>
+  </div>
+
+  <div class="text-center">
+    <h2 class="h4 mb-4">Descrição</h2>
+  </div>
+
+  <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+    <div class="sidebar-close" (click)="sidebarShow = !sidebarShow">
+      X
+    </div>
+    <div class="sidebar-content">
+      <div class="pointer" (click)="irPara('/estoque')">Estoque</div>
+    </div>
+  </div>

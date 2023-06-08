@@ -1,0 +1,50 @@
+<div class="barra sidebar-opener"><i class="fa-solid fa-bars icon2" (click)="sidebarShow = !sidebarShow"></i></div>
+
+<div class="container-fluid">
+  <div class="card card-gradient-success text-white text-lg " style="height: 100%;">
+    <div class="card-body">
+      <div class="col-lg-4 mb-3">
+        <div class="card-body">
+          <div class="row" style="height: 100%;">
+            <div class="col-lg-12 mb-2" style="display: flex; flex-direction: row;">
+              <h2>Pedidos realizados no dia</h2>
+            </div>
+            <div class="card-body-icon-bg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="card card-gradient-success2 text-white text-lg " style="height: 100%;">
+    <div class="card-body">
+      <div class="col-lg-4 mb-3">
+        <div class="card-body">
+          <div class="row" style="height: 100%;">
+            <div class="col-lg-12 mb-2" style="display: flex; flex-direction: row;">
+              <h2 class="icon">Faturamento</h2>
+              <div class="icon">Dia</div>
+              <hr>
+              <div class="icon">Semana</div>
+              <hr>
+              <div class="icon">Mês</div>
+            </div>
+            <div class="card-body-icon-bg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+  <div class="sidebar-close" (click)="sidebarShow = !sidebarShow">
+    X
+  </div>
+  <div class="sidebar-content">
+    <div class="pointer" (click)="irPara('/estoque')">Estoque</div>
+  </div>
+</div>
