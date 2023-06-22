@@ -1,0 +1,43 @@
+<div class="container-fluid bg-danger p-0 w-100" style="min-height: 100%;">
+    <navbar-header></navbar-header>
+    <div class="container-fluid pt-5 pb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-7">
+                <div class="container shadow-sm bg-white border-warning border border-2 rounded pt-4 pb-4 ps-5 pe-5">
+                    <form #form="ngForm">
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center"><span class="h1 text-danger">Alterar senha do usuário</span></div>
+                            <div class="col-6">
+                                <label class="form-label">Usuário</label>
+                                <input name="usuario" class="form-control mb-3" disabled [value]="usuario?.usuario">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">E-mail</label>
+                                <input name="email" class="form-control mb-3" disabled [value]="usuario?.email">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Senha antiga*</label>
+                                <input name="senhaAntiga" type="password" class="form-control mb-3" (ngModel)="senhaAntiga"
+                                    #senhaAntiga="ngModel" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Nova senha*</label>
+                                <input name="senhaNova" type="password" class="form-control mb-3" (ngModel)="senhaNova"
+                                    #senhaNova="ngModel" required>
+                            </div>
+                            <div class="col-12 mt-3 d-flex justify-content-between">
+                                <button type="submit" class="btn btn-outline-danger" (click)="telaAnterior()">
+                                    Voltar
+                                </button>
+                                <button type="submit" class="btn btn-danger" [disabled]="form.invalid"
+                                    (click)="alterarSenha(form)">
+                                    Alterar senha
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

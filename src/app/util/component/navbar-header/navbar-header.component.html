@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand text-danger" routerLink="/dashboard">MercaOn</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="categoriaDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Categorias
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="categoriaDropdown">
+            <li><a class="dropdown-item" href="#">Matinais</a></li>
+            <li><a class="dropdown-item" href="#">Alimentos básicos</a></li>
+            <li><a class="dropdown-item" href="#">Frescos</a></li>
+            <li><a class="dropdown-item" href="#">Perfumaria</a></li>
+            <li><a class="dropdown-item" href="#">Bebidas</a></li>
+            <li><a class="dropdown-item" href="#">Limpeza</a></li>
+            <li><a class="dropdown-item" href="#">Saúdavel</a></li>
+          </ul>
+        </li>
+        <li class="nav-item btn-group" *ngIf="adminLogado()">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin ações
+          </button>
+          <ul class="dropdown-menu">
+            <li><span class="dropdown-header">Venda</span></li>
+            <li><a class="dropdown-item" href="venda">Consultar vendas</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><span class="dropdown-header">Produto / Estoque</span></li>
+            <li><a class="dropdown-item" href="produto/criar">Criar produto</a></li>
+            <li><a class="dropdown-item" href="estoque/criar">Criar estoque</a></li>
+            <li><a class="dropdown-item" href="produto">Consultar produtos</a></li>
+            <li><a class="dropdown-item" href="estoque">Consultar estoques</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><span class="dropdown-header">Cliente</span></li>
+            <li><a class="dropdown-item" href="cliente">Consultar clientes</a></li>
+            <li><a class="dropdown-item" href="usuario">Consultar usuários</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="admin/criar">Criar conta admin</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-outline-success" *ngIf="clienteLogado()" routerLink="/carrinho">
+        <i class="fa-solid fa-cart-shopping me-2"></i>
+      </button>
+      <div class="btn-group dropstart ms-3">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <!-- <li *ngIf="clienteLogado()"><a class="dropdown-item" href="#"><i class="fa-solid fa-address-card me-2"></i>Perfil</a></li> -->
+          <li *ngIf="clienteLogado()">
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item pointer" (click)="deslogar()"><i
+                class="fa-solid fa-arrow-right-from-bracket me-2 text-danger"></i>Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

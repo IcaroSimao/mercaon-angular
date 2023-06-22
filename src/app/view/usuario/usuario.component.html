@@ -1,0 +1,30 @@
+<div class="container-fluid w-100 p-0" style="background-color: #F4F4F4; min-height: 100%;">
+    <navbar-header></navbar-header>
+    <div class="container pt-3 pb-3">
+      <span class="h2 text-danger">Usuário - Consultar</span>
+      <hr class="text-danger">
+      <div class="container p-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Usuário</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Nível</th>
+              <th scope="col" style="width: 20%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of usuarios; let i = index">
+              <td>{{item.usuario}}</td>
+              <td>{{item.email}}</td>
+              <td>{{recuperarNivelFormatado(item.nivel)}}</td>
+              <td>
+                <button class="btn btn-warning" [routerLink]="'/usuario/editar/'+item.id"><i class="fa-solid fa-pen"></i></button>
+                <button class="btn btn-danger ms-3" (click)="deletarUsuario(item)"><i class="fa-solid fa-trash-can"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

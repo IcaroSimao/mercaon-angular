@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProdutoResponse } from '../model/response/produto-response';
+import { ProdutoService } from '../service/produto.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-produto',
@@ -8,14 +11,28 @@ import { Router } from '@angular/router';
 })
 export class ProdutoComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  produtos: ProdutoResponse[] | null = null;
 
-  public sidebarShow: boolean = false;
-  
+  constructor(private router: Router, private produtoService: ProdutoService, private toastr: ToastrService) { }
+
   ngOnInit(): void {
+    this.consultarProdutos();
+  }
+
+  consultarProdutos() {
+    this.produtoService.consultar().subscribe((response) => {
+      this.produtos = response.data;
+    });
   }
 
   irPara(rota: string) {
-    this.route.navigate([rota]);
+    this.router.navigate([rota]);
+  }
+
+  deletarProduto(produto: ProdutoResponse) {
+    this.produtoService.deletar(produto.id.toString()).subscribe((response) => {
+      this.toastr.success(response.mensagem);
+      this.consultarProdutos()
+    })
   }
 }

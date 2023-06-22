@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../service/usuario.service';
+import { LoginService } from '../service/login.service';
+import { AutenticadorService } from '../service/autenticador.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-padrao',
@@ -7,17 +9,21 @@ import { UsuarioService } from '../service/usuario.service';
   styleUrls: ['./login-padrao.component.css']
 })
 export class LoginPadraoComponent implements OnInit {
+  
+  constructor(private loginService: LoginService, private auth: AutenticadorService, private route: Router) { }
 
-  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    this.usuarioService.consultarTodos().subscribe((response)=>{
-      console.log(response);
-    });
+
   }
 
-  logar() {
-    localStorage.setItem('usuario', 'ola mundo');
+  logar(loginRequest: any) {
+    this.loginService.logar(loginRequest).subscribe((response) => {
+      this.auth.salvarUsuario(response.data);
+      // REDIRECIONAR PARA O DASHBOARD
+      this.route.navigateByUrl('dashboard')
+    });
+    
   }
 
 }

@@ -1,26 +1,43 @@
-<div class="barra sidebar-opener"><i class="fa-solid fa-bars icon2" (click)="sidebarShow = !sidebarShow"></i></div>
-
-<div class="text-center">
-    <h1 class="h4 text-gray-900 mb-4">Produtos</h1>
-  </div>
-
-  <div class="text-center">
-    <h2 class="h4 mb-4">Quantidade:</h2>
-  </div>
-
-  <div class="text-center">
-    <h2 class="h4 mb-4">R$ 0,00</h2>
-  </div>
-
-  <div class="text-center">
-    <h2 class="h4 mb-4">Descrição</h2>
-  </div>
-
-  <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
-    <div class="sidebar-close" (click)="sidebarShow = !sidebarShow">
-      X
+<div class="container-fluid w-100 p-0" style="background-color: #F4F4F4; min-height: 100%;">
+  <navbar-header></navbar-header>
+  <div class="container pt-3 pb-3">
+    <span class="h2 text-danger">Estoque - Consultar</span>
+    <hr class="text-danger">
+    <div class="container p-3">
+      <div class="row mb-2">
+        <!-- <div class="col-md-4">
+          <input type="text" class="form-control mb-3" name="buscar" placeholder="Buscar por produto" #buscar>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-outline-success me-3" (click)="consultarProduto(buscar.value)">Ir</button>
+        </div> -->
+        <div class="col-12">
+          <button class="btn btn-success" routerLink="/estoque/criar">Novo estoque</button>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 15%;">Produto</th>
+            <th scope="col" style="width: 15%;">Nome</th>
+            <th scope="col"style="width: 40%;">Descrição</th>
+            <th scope="col"style="width: 10%;">Quantidade</th>
+            <th scope="col"style="width: 20%;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of estoques; let i = index">
+            <th scope="row">{{item.produto.nome}}</th>
+            <td>{{item.nome}}</td>
+            <td>{{item.descricao}}</td>
+            <td>{{item.quantidade}}</td>
+            <td>
+              <button class="btn btn-warning" [routerLink]="'/estoque/editar/'+item.id"><i class="fa-solid fa-pen"></i></button>
+              <button class="btn btn-danger ms-3" (click)="deletarEstoque(item)"><i class="fa-solid fa-trash-can"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="sidebar-content">
-      <div class="pointer" (click)="irPara('/estoque')">Estoque</div>
-    </div>
   </div>
+</div>

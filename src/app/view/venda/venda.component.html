@@ -1,0 +1,28 @@
+<div class="container-fluid w-100 p-0" style="background-color: #F4F4F4; min-height: 100%;">
+    <navbar-header></navbar-header>
+    <div class="container pt-3 pb-3">
+      <span class="h2 text-danger">Venda - Consultar</span>
+      <hr class="text-danger">
+      <div class="container p-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Data</th>
+              <th scope="col">Total</th>
+              <th scope="col" style="width: 20%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of vendas; let i = index">
+              <td>{{item.data | date: 'medium'}}</td>
+              <td>R$ {{item.total | number:'1.2-2'}}</td>
+              <td>
+                <button class="btn btn-warning" [routerLink]="'/venda/'+item.id"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-danger ms-3" (click)="deletarVenda(item)"><i class="fa-solid fa-trash-can"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
